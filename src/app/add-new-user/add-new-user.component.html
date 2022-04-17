@@ -1,0 +1,102 @@
+<!-- <p>add-new-user works!</p> -->
+<app-container> 
+    
+<div  class="container py-5 h-5">
+    <div class="row d-flex justify-content-center align-items-center h-50" style="margin-top: 5%;">
+            <div style="height: 20%;" class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div  class="card-body p-md-5 mx-md-4">    
+                  <div class="text-center">
+                    <h3> Register New Users Details </h3>
+                  </div>
+                  <form [formGroup]="formValue">
+
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input formControlName="email"                                             
+                       id="email" type="email" class="form-control" placeholder="Enter Email...."  required>                          
+                       <span style="color:red" *ngIf="formValue.controls['email']?.touched && formValue.controls['email'].invalid">Name is Required</span>
+                      <!-- <div class="invalid-feeback">
+                        <span style="color:red" *ngIf="formValue.get('name')?.hasError('usernameAlreadyTaken')">User Already Exist</span>
+                      </div> && !formValue.get('name')?.hasError('usernameAlreadyTaken')"             -->
+                    </div>
+          
+                    <div class="form-group">
+                      <label for="first_name">First Name</label>
+                      <input id="first_name" formControlName="first_name" type="text" class="form-control"
+                       placeholder="Enter First Name.." required>
+                        <span style="color:red" *ngIf="formValue.controls['first_name']?.touched && formValue.controls['first_name'].invalid">First Name Required</span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="last_name">Last Name</label>
+                      <input id="last_name" formControlName="last_name" type="text" class="form-control"
+                       placeholder="Enter Last Name.." required>
+                        <span style="color:red" *ngIf="formValue.controls['last_name']?.touched && formValue.controls['last_name'].invalid">First Name Required</span>
+                    </div>
+<!-- 
+                    <div class="form-group">
+                      <label for="avatar">Job</label>
+                      <input id="avatar" formControlName="avatar" type="text" class="form-control"
+                       placeholder="Enter Image URL.." required>
+                        <span style="color:red" *ngIf="formValue.controls['avatar']?.touched && formValue.controls['avatar'].invalid">Image Required</span>
+                    </div> -->
+                   
+                    <!-- <input type="submit" *ngIf="showAdd" (click)="postEmployeeDetails()" class="btn btn-primary mx-2"
+                      value="Save"> -->
+                     <button type="button" (click)="postUserDetails()" class="btn btn-primary mx-2"[disabled]="formValue.invalid">Register</button>
+                     <!-- <button type="button" *ngIf="showUpdate" (click)="updateEmployeeDetails()"
+                     class="btn btn-primary">Update</button>&nbsp; -->
+                     <button type="button" id="cancel" class="btn btn-secondary" routerLink="/list-of-user-dashboard">Close</button>   
+                     <!-- <button type="button" id="update" class="btn btn-secondary" (click)="updateUser()"></button>       -->
+                  </form>
+             </div>
+        </div>          
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: 110px;">
+    <div class="form-group row">
+      <div class="col-6" style="margin-top: 2.2%;">
+        <input type="text" id="srch" class="form-control" placeholder="Search here using Name" style="width: 300px;"/>
+      </div>  
+      <div class="col-12" style="overflow-x: auto;">
+          <table class="table table-sm table-dark">
+            <thead>
+              <tr class="bg-info text-white text-center">
+                <th>ID</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>              
+                <th>Avatar</th>
+                <!-- <th>Action</th> -->
+              </tr>
+            </thead>                            
+            <tbody>
+              <tr *ngFor="let row of listofUserData">            
+                <td>{{row.id}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.first_name}}</td>
+                <td>{{row.last_name}}</td> 
+                <!-- <td><img [src]="row.avatar"/></td>            -->
+                <!-- <td>{{row.avatar}}</td> -->
+                <!-- <td class="text-right">                -->
+                <!-- <button type="button" (click)="updateUser(row)" class="btn btn-info"> Edit</button>&nbsp;&nbsp;      (click)="updateUser(row)"   -->
+                <!-- Delete confirmation code  -->                 
+                <!-- <button type="button" (click)="deleteUser(row)">Delete</button>                -->
+                <!-- </td>             -->
+              </tr>          
+            </tbody>           
+          </table>
+          <div style="color: aliceblue;" id="Nodata">No Search Details Found ....</div>
+        </div>   
+          <!-- pagination -->
+      <!-- <div style="margin-bottom: 20%;">
+        <div class="container pt-3">
+          <pagination-controls (pageChange)="page=$event" class="fixed-bottom"></pagination-controls>
+        </div>
+      </div> -->
+    </div>
+  </div>
+    
+
+</app-container>
